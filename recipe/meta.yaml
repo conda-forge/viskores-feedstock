@@ -39,7 +39,7 @@ source:
   sha256: 5bff5bbd747b7662bb4630889960371d06fcc5e5a962d974a898d1883f196eba
 
 build:
-  number: 0
+  number: 1
   script:
     - cmake -GNinja -S $SRC_DIR  -B build -DCMAKE_INSTALL_PREFIX=$PREFIX {{ common_flags }}  # [unix]
     - cmake -GNinja -S %SRC_DIR% -B build -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% {{ common_flags }}  # [win]
