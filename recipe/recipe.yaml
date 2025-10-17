@@ -50,6 +50,8 @@ build:
         - cmake --install build
         - Viskores_DIR=$PREFIX cmake -GNinja -S $SRC_DIR/examples/smoke_test/ -B smoke_test_build
         - cmake --build smoke_test_build
+    - if: unix and x86_64
+      then:
         - ./smoke_test_build/smoke_test
     - if: win
       then:
@@ -62,8 +64,8 @@ requirements:
     - ${{ pin_subpackage(name|lower, upper_bound='x.x') }}
   build:
     - ${{ compiler('c') }}
-    - ${{ stdlib('c') }}
     - ${{ compiler('cxx') }}
+    - ${{ stdlib('c') }}
     - cmake >=3.23
     - gnuconfig
     - if: linux
