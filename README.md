@@ -20,7 +20,6 @@ computing by providing abstract models for data and execution that can be
 applied to a variety of algorithms across many different processor
 architectures.
 
-
 Current build status
 ====================
 
