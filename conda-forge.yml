@@ -6,6 +6,8 @@ conda_build:
 conda_forge_output_validation: true
 bot:
   automerge: true
+  version_updates:
+    sources: githubreleases
 conda_build_tool: rattler-build
 azure:
   max_parallel: 25
