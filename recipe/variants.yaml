@@ -1,3 +1,6 @@
 github_actions_labels:
   - if: linux
     then: cirun-openstack-cpu-2xlarge
+cuda_compiler_version:
+  - "None"
+  - "12.6"
