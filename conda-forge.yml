@@ -7,9 +7,11 @@ conda_forge_output_validation: true
 bot:
   automerge: true
   version_updates:
-    sources: githubreleases
+    sources:
+      - githubreleases
 conda_build_tool: rattler-build
 azure:
+  free_disk_space: true
   max_parallel: 25
 build_platform:
   linux_aarch64: linux_64
