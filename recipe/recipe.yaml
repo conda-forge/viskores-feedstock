@@ -2,7 +2,7 @@
 # For more information see: https://prefix-dev.github.io/rattler-build/latest/reference/recipe_file/
 
 context:
-  version: "1.0.0"
+  version: "1.1.0"
   soversion: ${{ (version | split('.'))[:2] | join('.') }}
   viskores_modules: |
     cont
@@ -27,10 +27,7 @@ context:
     rendering
     source
     worklet
-  common_flags:
-    -DCMAKE_BUILD_TYPE=Release
-    -DViskores_ENABLE_HDF5_IO=ON
-    -DViskores_USE_DEFAULT_TYPES_FOR_VTK=ON
+  common_flags: -DCMAKE_BUILD_TYPE=Release -DViskores_ENABLE_HDF5_IO=ON -DViskores_USE_DEFAULT_TYPES_FOR_VTK=ON
 
 package:
   name: viskores
@@ -38,10 +35,10 @@ package:
 
 source:
   url: https://github.com/Viskores/viskores/archive/refs/tags/v${{ version }}.tar.gz
-  sha256: 5bff5bbd747b7662bb4630889960371d06fcc5e5a962d974a898d1883f196eba
+  sha256: 24eb77decff0370789594a8064060d64b51ba0b9ae9d78c882daada4d8f19a20
 
 build:
-  number: 3
+  number: 0
   script:
     - if: unix
       then:
@@ -50,9 +47,9 @@ build:
         - cmake --install build
         - Viskores_DIR=$PREFIX cmake -GNinja -S $SRC_DIR/examples/smoke_test/ -B smoke_test_build
         - cmake --build smoke_test_build
-    - if: unix and x86_64
-      then:
-        - ./smoke_test_build/smoke_test
+        - if: x86_64
+          then:
+            - ./smoke_test_build/smoke_test
     - if: win
       then:
         - cmake -GNinja -S %SRC_DIR% -B build -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ${{ common_flags }}
@@ -86,23 +83,23 @@ requirements:
 
 tests:
   - script:
-    - if: linux
-      then:
-        - for: ${{ viskores_modules | split }}
-          then:
-            - test -f $PREFIX/lib/libviskores_${{ each }}-${{ soversion }}.so.${{ version }}
-    - if: osx
-      then:
-        - for: ${{ viskores_modules | split }}
-          then:
-            - test -f $PREFIX/lib/libviskores_${{ each }}-${{ soversion }}.${{ version }}.dylib
-    - if: win
-      then:
-        - for: ${{ viskores_modules | split }}
-          then:
-            - if not exist %LIBRARY_PREFIX%\bin\viskores_${{ each }}-${{ soversion }}.dll exit 1
-            - if not exist %LIBRARY_PREFIX%\lib\viskores_${{ each }}-${{ soversion }}.lib exit 1
-        - if not exist %LIBRARY_PREFIX%\include\viskores-${{ soversion }} exit 1
+      - if: linux
+        then:
+          - for: ${{ viskores_modules | split }}
+            then:
+              - test -f $PREFIX/lib/libviskores_${{ each }}-${{ soversion }}.so.${{ version }}
+      - if: osx
+        then:
+          - for: ${{ viskores_modules | split }}
+            then:
+              - test -f $PREFIX/lib/libviskores_${{ each }}-${{ soversion }}.${{ version }}.dylib
+      - if: win
+        then:
+          - for: ${{ viskores_modules | split }}
+            then:
+              - if not exist %LIBRARY_PREFIX%\bin\viskores_${{ each }}-${{ soversion }}.dll exit 1
+              - if not exist %LIBRARY_PREFIX%\lib\viskores_${{ each }}-${{ soversion }}.lib exit 1
+          - if not exist %LIBRARY_PREFIX%\include\viskores-${{ soversion }} exit 1
 
 about:
   homepage: https://github.com/Viskores/viskores
