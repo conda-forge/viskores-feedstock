@@ -18,6 +18,8 @@ cxx_compiler:
 - clangxx
 cxx_compiler_version:
 - '19'
+github_actions_labels:
+- cirun-openstack-gpu-2xlarge
 glew:
 - '2.2'
 hdf5:
