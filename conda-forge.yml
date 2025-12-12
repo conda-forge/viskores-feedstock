@@ -1,7 +1,6 @@
 azure:
   max_parallel: 25
 bot:
-  automerge: true
   version_updates:
     sources:
       - githubreleases
