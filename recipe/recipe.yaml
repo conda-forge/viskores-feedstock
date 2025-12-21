@@ -45,7 +45,7 @@ source:
   sha256: 24eb77decff0370789594a8064060d64b51ba0b9ae9d78c882daada4d8f19a20
 
 build:
-  number: 1
+  number: 2
   string: ${{ "cuda" ~ cuda_compiler_version ~ "_h" ~ hash ~ "_" ~ number if cuda_compiler_version != "None" else "cpu_h" ~ hash ~ "_" ~ number }}
   skip:
     - cuda_compiler_version != "None" and win
@@ -61,9 +61,9 @@ build:
         - cmake --install build
         - Viskores_DIR=$PREFIX cmake -GNinja -S $SRC_DIR/examples/smoke_test/ -B smoke_test_build
         - cmake --build smoke_test_build
-    - if: unix and x86_64
-      then:
-        - ./smoke_test_build/smoke_test
+        - if: x86_64
+          then:
+            - ./smoke_test_build/smoke_test
     - if: win
       then:
         - cmake -GNinja -S %SRC_DIR% -B build -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ${{ common_flags }} ${{ cuda_flags }}
