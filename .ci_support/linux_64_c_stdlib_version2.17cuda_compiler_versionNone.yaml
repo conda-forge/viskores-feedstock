@@ -23,7 +23,7 @@ docker_image:
 github_actions_labels:
 - cirun-openstack-cpu-2xlarge
 glew:
-- '2.2'
+- '2.3'
 hdf5:
 - 1.14.6
 target_platform:

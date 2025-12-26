@@ -45,7 +45,7 @@ source:
   sha256: 24eb77decff0370789594a8064060d64b51ba0b9ae9d78c882daada4d8f19a20
 
 build:
-  number: 2
+  number: 3
   string: ${{ "cuda" ~ cuda_compiler_version ~ "_h" ~ hash ~ "_" ~ number if cuda_compiler_version != "None" else "cpu_h" ~ hash ~ "_" ~ number }}
   skip:
     - cuda_compiler_version != "None" and win
