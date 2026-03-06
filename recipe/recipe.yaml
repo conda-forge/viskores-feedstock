@@ -4,7 +4,7 @@
 context:
   version: "1.1.0"
   soversion: ${{ (version | split('.'))[:2] | join('.') }}
-  viskores_modules: |
+  viskores_modules: >-
     cont
     filter_clean_grid
     filter_connected_components
@@ -106,22 +106,22 @@ requirements:
 tests:
   - script:
       - if: linux
-        then:
-          - for: ${{ viskores_modules | split }}
-            then:
-              - test -f $PREFIX/lib/libviskores_${{ each }}-${{ soversion }}.so.${{ version }}
+        then: |
+          for module in ${{ viskores_modules }}; do
+            test -f $PREFIX/lib/libviskores_${module}-${{ soversion }}.so.${{ version }}
+          done
       - if: osx
-        then:
-          - for: ${{ viskores_modules | split }}
-            then:
-              - test -f $PREFIX/lib/libviskores_${{ each }}-${{ soversion }}.${{ version }}.dylib
+        then: |
+          for module in ${{ viskores_modules }}; do
+            test -f $PREFIX/lib/libviskores_${module}-${{ soversion }}.${{ version }}.dylib
+          done
       - if: win
-        then:
-          - for: ${{ viskores_modules | split }}
-            then:
-              - if not exist %LIBRARY_PREFIX%\bin\viskores_${{ each }}-${{ soversion }}.dll exit 1
-              - if not exist %LIBRARY_PREFIX%\lib\viskores_${{ each }}-${{ soversion }}.lib exit 1
-          - if not exist %LIBRARY_PREFIX%\include\viskores-${{ soversion }} exit 1
+        then: |
+          for %%m in (${{ viskores_modules }}) do (
+            if not exist %LIBRARY_PREFIX%\bin\viskores_%%m-${{ soversion }}.dll exit 1
+            if not exist %LIBRARY_PREFIX%\lib\viskores_%%m-${{ soversion }}.lib exit 1
+          )
+          if not exist %LIBRARY_PREFIX%\include\viskores-${{ soversion }} exit 1
 
 about:
   homepage: https://github.com/Viskores/viskores
