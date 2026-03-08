@@ -23,5 +23,4 @@ github_actions:
 provider:
   linux_64: github_actions
   linux_aarch64: default
-  linux_ppc64le: default
 test: native_and_emulated
