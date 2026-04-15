@@ -1,3 +1,0 @@
-github_actions_labels:
-  - if: linux
-    then: ghcr.io/cirruslabs/ubuntu-runner-amd64:24.04-md
