@@ -19,37 +19,68 @@ jobs:
     timeout-minutes: 360
     strategy:
       fail-fast: false
+      max-parallel: 50
       matrix:
         include:
-          - CONFIG: linux_64_c_stdlib_version2.17cuda_compiler_version12.9
+          - CONFIG: linux_64_c_stdlib_version2.17cuda_compiler_version12.9hdf51.14.6
             UPLOAD_PACKAGES: True
             os: ubuntu
-            runs_on: ['cirun-openstack-cpu-2xlarge--${{ github.run_id }}-linux_64_c_stdlib_version2.17cuda_compil_hd7918865', 'linux', 'x64', 'self-hosted']
+            runs_on: ['cirun-openstack-cpu-2xlarge--${{ github.run_id }}-linux_64_c_stdlib_version2.17cuda_compil_h362fe8e7']
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-          - CONFIG: linux_64_c_stdlib_version2.17cuda_compiler_versionNone
+          - CONFIG: linux_64_c_stdlib_version2.17cuda_compiler_version12.9hdf52
             UPLOAD_PACKAGES: True
             os: ubuntu
-            runs_on: ['cirun-openstack-cpu-2xlarge--${{ github.run_id }}-linux_64_c_stdlib_version2.17cuda_compil_he55e7c14', 'linux', 'x64', 'self-hosted']
+            runs_on: ['cirun-openstack-cpu-2xlarge--${{ github.run_id }}-linux_64_c_stdlib_version2.17cuda_compil_h00ed6c13']
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-          - CONFIG: linux_64_c_stdlib_version2.28cuda_compiler_version13.0
+          - CONFIG: linux_64_c_stdlib_version2.17cuda_compiler_versionNonehdf51.14.6
             UPLOAD_PACKAGES: True
             os: ubuntu
-            runs_on: ['cirun-openstack-cpu-2xlarge--${{ github.run_id }}-linux_64_c_stdlib_version2.28cuda_compil_h282d3825', 'linux', 'x64', 'self-hosted']
+            runs_on: ['cirun-openstack-cpu-2xlarge--${{ github.run_id }}-linux_64_c_stdlib_version2.17cuda_compil_h6c73126f']
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-          - CONFIG: linux_aarch64_c_stdlib_version2.17cuda_compiler_version12.9
+          - CONFIG: linux_64_c_stdlib_version2.17cuda_compiler_versionNonehdf52
             UPLOAD_PACKAGES: True
             os: ubuntu
-            runs_on: ['cirun-openstack-cpu-2xlarge--${{ github.run_id }}-linux_aarch64_c_stdlib_version2.17cuda_c_h4e17e106', 'linux', 'x64', 'self-hosted']
+            runs_on: ['cirun-openstack-cpu-2xlarge--${{ github.run_id }}-linux_64_c_stdlib_version2.17cuda_compil_h1db26699']
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-          - CONFIG: linux_aarch64_c_stdlib_version2.17cuda_compiler_versionNone
+          - CONFIG: linux_64_c_stdlib_version2.28cuda_compiler_version13.0hdf51.14.6
             UPLOAD_PACKAGES: True
             os: ubuntu
-            runs_on: ['cirun-openstack-cpu-2xlarge--${{ github.run_id }}-linux_aarch64_c_stdlib_version2.17cuda_c_h5fc4c0be', 'linux', 'x64', 'self-hosted']
+            runs_on: ['cirun-openstack-cpu-2xlarge--${{ github.run_id }}-linux_64_c_stdlib_version2.28cuda_compil_h52eb7827']
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-          - CONFIG: linux_aarch64_c_stdlib_version2.28cuda_compiler_version13.0
+          - CONFIG: linux_64_c_stdlib_version2.28cuda_compiler_version13.0hdf52
             UPLOAD_PACKAGES: True
             os: ubuntu
-            runs_on: ['cirun-openstack-cpu-2xlarge--${{ github.run_id }}-linux_aarch64_c_stdlib_version2.28cuda_c_h696c8e49', 'linux', 'x64', 'self-hosted']
+            runs_on: ['cirun-openstack-cpu-2xlarge--${{ github.run_id }}-linux_64_c_stdlib_version2.28cuda_compil_h536e8735']
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+          - CONFIG: linux_aarch64_c_stdlib_version2.17cuda_compiler_version12.9hdf51.14.6
+            UPLOAD_PACKAGES: True
+            os: ubuntu
+            runs_on: ['cirun-openstack-cpu-2xlarge--${{ github.run_id }}-linux_aarch64_c_stdlib_version2.17cuda_c_hcb286638']
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+          - CONFIG: linux_aarch64_c_stdlib_version2.17cuda_compiler_version12.9hdf52
+            UPLOAD_PACKAGES: True
+            os: ubuntu
+            runs_on: ['cirun-openstack-cpu-2xlarge--${{ github.run_id }}-linux_aarch64_c_stdlib_version2.17cuda_c_h2042af67']
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+          - CONFIG: linux_aarch64_c_stdlib_version2.17cuda_compiler_versionNonehdf51.14.6
+            UPLOAD_PACKAGES: True
+            os: ubuntu
+            runs_on: ['cirun-openstack-cpu-2xlarge--${{ github.run_id }}-linux_aarch64_c_stdlib_version2.17cuda_c_h84f040c5']
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+          - CONFIG: linux_aarch64_c_stdlib_version2.17cuda_compiler_versionNonehdf52
+            UPLOAD_PACKAGES: True
+            os: ubuntu
+            runs_on: ['cirun-openstack-cpu-2xlarge--${{ github.run_id }}-linux_aarch64_c_stdlib_version2.17cuda_c_hf8e64a68']
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+          - CONFIG: linux_aarch64_c_stdlib_version2.28cuda_compiler_version13.0hdf51.14.6
+            UPLOAD_PACKAGES: True
+            os: ubuntu
+            runs_on: ['cirun-openstack-cpu-2xlarge--${{ github.run_id }}-linux_aarch64_c_stdlib_version2.28cuda_c_hd9e98e54']
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+          - CONFIG: linux_aarch64_c_stdlib_version2.28cuda_compiler_version13.0hdf52
+            UPLOAD_PACKAGES: True
+            os: ubuntu
+            runs_on: ['cirun-openstack-cpu-2xlarge--${{ github.run_id }}-linux_aarch64_c_stdlib_version2.28cuda_c_hac2459e5']
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
     steps:
 
@@ -124,7 +155,7 @@ jobs:
         # default value; make it explicit, as it needs to match with artefact
         # generation below. Not configurable for now, can be revisited later
         CONDA_BLD_DIR: C:\bld
-        MINIFORGE_HOME: D:\Miniforge
+        MINIFORGE_HOME: ${{ contains(runner.arch, 'ARM') && 'C' || 'D' }}:\Miniforge
         PYTHONUNBUFFERED: 1
         CONFIG: ${{ matrix.CONFIG }}
         CI: github_actions
