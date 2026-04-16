@@ -21,7 +21,7 @@ cxx_compiler_version:
 docker_image:
 - quay.io/condaforge/linux-anvil-x86_64:alma9
 github_actions_labels:
-- cirun-openstack-cpu-2xlarge
+- blacksmith-16vcpu-ubuntu-2404
 glew:
 - '2.3'
 hdf5:
