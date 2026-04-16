@@ -40,18 +40,18 @@ jobs:
           - CONFIG: linux_aarch64_c_stdlib_version2.17cuda_compiler_version12.9
             UPLOAD_PACKAGES: True
             os: ubuntu
-            runs_on: ['blacksmith-16vcpu-ubuntu-2404']
-            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+            runs_on: ['blacksmith-16vcpu-ubuntu-2404-arm']
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-aarch64:alma9
           - CONFIG: linux_aarch64_c_stdlib_version2.17cuda_compiler_versionNone
             UPLOAD_PACKAGES: True
             os: ubuntu
-            runs_on: ['blacksmith-16vcpu-ubuntu-2404']
-            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+            runs_on: ['blacksmith-16vcpu-ubuntu-2404-arm']
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-aarch64:alma9
           - CONFIG: linux_aarch64_c_stdlib_version2.28cuda_compiler_version13.0
             UPLOAD_PACKAGES: True
             os: ubuntu
-            runs_on: ['blacksmith-16vcpu-ubuntu-2404']
-            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+            runs_on: ['blacksmith-16vcpu-ubuntu-2404-arm']
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-aarch64:alma9
     steps:
 
     - name: Checkout code
