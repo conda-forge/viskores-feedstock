@@ -1,3 +1,5 @@
 github_actions_labels:
-  - if: linux
+  - if: linux and x86_64
     then: blacksmith-16vcpu-ubuntu-2404
+  - if: linux and aarch64
+    then: blacksmith-16vcpu-ubuntu-2404-arm
