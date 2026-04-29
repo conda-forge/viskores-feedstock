@@ -11,9 +11,11 @@ jobs:
       win_64_cuda_compiler_versionNonehdf51.14.6:
         CONFIG: win_64_cuda_compiler_versionNonehdf51.14.6
         UPLOAD_PACKAGES: 'True'
+        store_build_artifacts: false
       win_64_cuda_compiler_versionNonehdf52:
         CONFIG: win_64_cuda_compiler_versionNonehdf52
         UPLOAD_PACKAGES: 'True'
+        store_build_artifacts: false
   timeoutInMinutes: 360
   variables:
     CONDA_BLD_PATH: D:\\bld\\
