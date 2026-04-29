@@ -2,9 +2,9 @@
 # For more information see: https://prefix-dev.github.io/rattler-build/latest/reference/recipe_file/
 
 context:
-  version: "1.1.0"
+  version: "1.1.1"
   soversion: ${{ (version | split('.'))[:2] | join('.') }}
-  build_number: 6
+  build_number: 0
   viskores_modules: >-
     cont
     filter_clean_grid
@@ -38,7 +38,7 @@ package:
 
 source:
   url: https://github.com/Viskores/viskores/archive/refs/tags/v${{ version }}.tar.gz
-  sha256: 24eb77decff0370789594a8064060d64b51ba0b9ae9d78c882daada4d8f19a20
+  sha256: 2a6c7a9e036d1756f4f8a6a835a4cee91452197a22ddce755672370ccc296605
 
 build:
   number: ${{ build_number }}
