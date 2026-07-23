@@ -1,5 +1,4 @@
 azure:
-  free_disk_space: true
   max_parallel: 25
 bot:
   version_updates:
@@ -20,3 +19,5 @@ provider:
   linux_64: github_actions
   linux_aarch64: github_actions
   osx_arm64: default
+workflow_settings:
+  free_disk_space: quick
