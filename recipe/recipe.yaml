@@ -2,9 +2,9 @@
 # For more information see: https://prefix-dev.github.io/rattler-build/latest/reference/recipe_file/
 
 context:
-  version: "1.1.1"
+  version: "1.2.0"
   soversion: ${{ (version | split('.'))[:2] | join('.') }}
-  build_number: 1
+  build_number: 0
   viskores_modules: >-
     cont
     filter_clean_grid
@@ -38,7 +38,7 @@ package:
 
 source:
   url: https://github.com/Viskores/viskores/archive/refs/tags/v${{ version }}.tar.gz
-  sha256: 2a6c7a9e036d1756f4f8a6a835a4cee91452197a22ddce755672370ccc296605
+  sha256: 932480746ea516bc1091326e4de37a9d75f963aa52c5708d89d0d546d6df6c77
   patches:
     - patches/0001-shorten-header-filenames-windows-max-path.patch
 
