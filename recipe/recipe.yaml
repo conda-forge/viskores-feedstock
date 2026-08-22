@@ -106,18 +106,20 @@ tests:
       - if: linux
         then: |
           for module in ${{ viskores_modules }}; do
-            test -f $PREFIX/lib/libviskores_${module}-${{ soversion }}.so.${{ version }}
+            test -f $PREFIX/lib/libviskores_${module}.so.${{ version }}
+            test -f $PREFIX/lib/libviskores_${module}.so.${{ soversion }}
           done
       - if: osx
         then: |
           for module in ${{ viskores_modules }}; do
-            test -f $PREFIX/lib/libviskores_${module}-${{ soversion }}.${{ version }}.dylib
+            test -f $PREFIX/lib/libviskores_${module}.${{ version }}.dylib
+            test -f $PREFIX/lib/libviskores_${module}.${{ soversion }}.dylib
           done
       - if: win
         then: |
           for %%m in (${{ viskores_modules }}) do (
-            if not exist %LIBRARY_PREFIX%\bin\viskores_%%m-${{ soversion }}.dll exit 1
-            if not exist %LIBRARY_PREFIX%\lib\viskores_%%m-${{ soversion }}.lib exit 1
+            if not exist %LIBRARY_PREFIX%\bin\viskores_%%m.dll exit 1
+            if not exist %LIBRARY_PREFIX%\lib\viskores_%%m.lib exit 1
           )
           if not exist %LIBRARY_PREFIX%\include\viskores-${{ soversion }} exit 1
 
