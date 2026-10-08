@@ -10,8 +10,6 @@ cuda_compiler_version:
 - None
 cxx_compiler:
 - vs2022
-glew:
-- '2.3'
 hdf5:
 - '2'
 target_platform:

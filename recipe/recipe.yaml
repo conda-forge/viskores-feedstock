@@ -86,9 +86,7 @@ requirements:
     - ninja
     - pkg-config
   host:
-    - glew
     - hdf5
-    - mesalib
     - zfp
     - if: cuda_compiler_version != "None"
       then: cuda-version=${{ cuda_compiler_version }}
