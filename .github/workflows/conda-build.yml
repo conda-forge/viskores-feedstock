@@ -28,7 +28,7 @@ jobs:
             UPLOAD_PACKAGES: True
             build_workspace_dir: build_artifacts
             docker_run_args: 
-            free_disk_space: skip
+            free_disk_space: quick
             os: ubuntu
             pagefile_size: 0
             resize_partitions: False
@@ -40,7 +40,7 @@ jobs:
             UPLOAD_PACKAGES: True
             build_workspace_dir: build_artifacts
             docker_run_args: 
-            free_disk_space: skip
+            free_disk_space: quick
             os: ubuntu
             pagefile_size: 0
             resize_partitions: False
@@ -52,7 +52,7 @@ jobs:
             UPLOAD_PACKAGES: True
             build_workspace_dir: build_artifacts
             docker_run_args: 
-            free_disk_space: skip
+            free_disk_space: quick
             os: ubuntu
             pagefile_size: 0
             resize_partitions: False
@@ -64,31 +64,31 @@ jobs:
             UPLOAD_PACKAGES: True
             build_workspace_dir: build_artifacts
             docker_run_args: 
-            free_disk_space: skip
+            free_disk_space: quick
             os: ubuntu
             pagefile_size: 0
             resize_partitions: False
             runs_on: ['blacksmith-16vcpu-ubuntu-2404']
             tools_install_dir: ~/miniforge3
-          - CONFIG: linux_64_c_compiler_version15c_stdlib_version2.28cuda_compiler_version13.0cxx_compiler_version15hdf51.14.6
+          - CONFIG: linux_64_c_compiler_version15c_stdlib_version2.28cuda_compiler_version13.4cxx_compiler_version15hdf51.14.6
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
             build_workspace_dir: build_artifacts
             docker_run_args: 
-            free_disk_space: skip
+            free_disk_space: quick
             os: ubuntu
             pagefile_size: 0
             resize_partitions: False
             runs_on: ['blacksmith-16vcpu-ubuntu-2404']
             tools_install_dir: ~/miniforge3
-          - CONFIG: linux_64_c_compiler_version15c_stdlib_version2.28cuda_compiler_version13.0cxx_compiler_version15hdf52
+          - CONFIG: linux_64_c_compiler_version15c_stdlib_version2.28cuda_compiler_version13.4cxx_compiler_version15hdf52
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
             build_workspace_dir: build_artifacts
             docker_run_args: 
-            free_disk_space: skip
+            free_disk_space: quick
             os: ubuntu
             pagefile_size: 0
             resize_partitions: False
@@ -100,7 +100,7 @@ jobs:
             UPLOAD_PACKAGES: True
             build_workspace_dir: build_artifacts
             docker_run_args: 
-            free_disk_space: skip
+            free_disk_space: quick
             os: ubuntu
             pagefile_size: 0
             resize_partitions: False
@@ -112,7 +112,7 @@ jobs:
             UPLOAD_PACKAGES: True
             build_workspace_dir: build_artifacts
             docker_run_args: 
-            free_disk_space: skip
+            free_disk_space: quick
             os: ubuntu
             pagefile_size: 0
             resize_partitions: False
@@ -124,7 +124,7 @@ jobs:
             UPLOAD_PACKAGES: True
             build_workspace_dir: build_artifacts
             docker_run_args: 
-            free_disk_space: skip
+            free_disk_space: quick
             os: ubuntu
             pagefile_size: 0
             resize_partitions: False
@@ -136,31 +136,31 @@ jobs:
             UPLOAD_PACKAGES: True
             build_workspace_dir: build_artifacts
             docker_run_args: 
-            free_disk_space: skip
+            free_disk_space: quick
             os: ubuntu
             pagefile_size: 0
             resize_partitions: False
             runs_on: ['blacksmith-16vcpu-ubuntu-2404-arm']
             tools_install_dir: ~/miniforge3
-          - CONFIG: linux_aarch64_c_compiler_version15c_stdlib_version2.28cuda_compiler_version13.0cxx_compiler_version15hdf51.14.6
+          - CONFIG: linux_aarch64_c_compiler_version15c_stdlib_version2.28cuda_compiler_version13.4cxx_compiler_version15hdf51.14.6
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-aarch64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
             build_workspace_dir: build_artifacts
             docker_run_args: 
-            free_disk_space: skip
+            free_disk_space: quick
             os: ubuntu
             pagefile_size: 0
             resize_partitions: False
             runs_on: ['blacksmith-16vcpu-ubuntu-2404-arm']
             tools_install_dir: ~/miniforge3
-          - CONFIG: linux_aarch64_c_compiler_version15c_stdlib_version2.28cuda_compiler_version13.0cxx_compiler_version15hdf52
+          - CONFIG: linux_aarch64_c_compiler_version15c_stdlib_version2.28cuda_compiler_version13.4cxx_compiler_version15hdf52
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-aarch64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
             build_workspace_dir: build_artifacts
             docker_run_args: 
-            free_disk_space: skip
+            free_disk_space: quick
             os: ubuntu
             pagefile_size: 0
             resize_partitions: False
@@ -172,7 +172,7 @@ jobs:
             build_platform: win-64
             build_workspace_dir: D:\\bld\\
             docker_run_args: 
-            free_disk_space: skip
+            free_disk_space: quick
             os: windows
             pagefile_size: 0
             resize_partitions: False
@@ -184,7 +184,7 @@ jobs:
             build_platform: win-64
             build_workspace_dir: D:\\bld\\
             docker_run_args: 
-            free_disk_space: skip
+            free_disk_space: quick
             os: windows
             pagefile_size: 0
             resize_partitions: False
@@ -194,6 +194,14 @@ jobs:
 
     - name: Checkout code
       uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+    - name: Manage disk space
+      env:
+        FREE_DISK_SPACE: ${{ matrix.free_disk_space }}
+        OS: ${{ matrix.os }}
+      shell: bash
+      run: |
+        .scripts/free_disk_space.sh "${FREE_DISK_SPACE}"
     - name: Configure binfmt_misc
       if: matrix.os == 'ubuntu'
       shell: bash
