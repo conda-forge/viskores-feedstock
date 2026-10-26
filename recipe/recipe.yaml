@@ -4,7 +4,7 @@
 context:
   version: "1.2.0"
   soversion: ${{ (version | split('.'))[:2] | join('.') }}
-  build_number: 0
+  build_number: 1
   viskores_modules: >-
     cont
     filter_clean_grid
